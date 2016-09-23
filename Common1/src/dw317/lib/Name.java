@@ -61,14 +61,12 @@ public class Name implements Serializable {
 	public String toString() {
 		return (firstName + "*" + lastName);
 	}
-	/*
+	/** 
 	 * @author Nicolas Fontaine
-	 * @return first name and last name as a string.
-	 * Validates the first and last name, to see if it is 
-	 * shorter than 2 letters and if it has valid characters.
+	 * @return first name as a string if true. Throw exception if not valid.
 	 */
-
 	public static String validateName(String firstOrLast) {
+		//TODO change docs
 		String firstOrLastCopy = firstOrLast.toLowerCase();
 		if (firstOrLastCopy != null) {
 			if (firstOrLastCopy.length() < 2 || 
