@@ -6,23 +6,27 @@ package dw317.lib;
 import java.io.Serializable;
 
 /**
- * @author
+ * @author Nicolas Fontaine
  *
  */
 public class Email implements Serializable, Comparable<Email> {
 
-	private final long serialVersionUID = 42031768871L;
+	private final static long serialVersionUID = 42031768871L;
 	private final String address;
-
-	public Email(String address) {
-		this.address = address;
-	}
-
-	/* @return returns the email address.
+	
+	/* @param cardType, number
 	 * 
 	 */
+	public Email(String address) {
+		this.address = validateEmail(address);
+	}
+
+	/* @author Nicolas Fontaine
+	 * @return tmp, a copy of the address
+	 */
 	public String getAddress() {
-		return address;
+		String tmp = address;
+		return tmp;
 	}
 
 	/* @author Nicolas Fontaine
@@ -56,8 +60,10 @@ public class Email implements Serializable, Comparable<Email> {
 		return s;
 	}
 
-	/* @author Nicolas Fontaine 
-	 * @return boolean if the emails are equal
+	/* @author Nicolas Fontaine
+	 * @return boolean if the emails are equal. Two emails are equal if
+	 * they have the same reference, are the same object, have the same class,
+	 * have the same address, or have the same hash code.
 	 */
 	@Override
 	public final boolean equals(Object object) {
@@ -73,35 +79,70 @@ public class Email implements Serializable, Comparable<Email> {
 		if (this.getAddress() == ((Email) object).getAddress()) {
 			return true;
 		}
+		if (this.hashCode() == object.hashCode()) {
+			return true;
+		}
 		return false;
+	}
+
+	public final int hashCode() {
+		
+		return this.hashCode();
 	}
 
 	@Override
 	public int compareTo(Email arg0) {
-
 		return 0;
 	}
-
-	//Not necessary for now
-	/*@Override
-	public String getNumber() {
-		return null;
-	}
-
-	@Override
-	public Scheme getType() {
-		return null;
-	}*/
 
 	@Override
 	public String toString() {
 		return address;
 	}
-
-	private static String validateEmail(String email) 
-			throws IllegalArgumentException {
-
-		return null;
+	
+	/* @author Nicolas Fontaine
+	 * @return email, the email address
+	 * @param email
+	 */
+	private static String validateEmail(String email) throws IllegalArgumentException {
+		if (email != null) {
+			Email e = new Email(email);
+			if (e.getUserId().length() < 1 || e.getUserId().length() > 32) {
+				throw new IllegalArgumentException("Email length isn't valid.");
+			}
+			if (!e.getUserId().matches("^[A-Za-z0-9_.-]+$") || e.getUserId().matches("^[.].+")
+					|| e.getUserId().matches(".+[.]$") || e.getUserId().matches("^[.]$")
+					|| e.getUserId().matches(".*[.][.].*")) {
+				throw new IllegalArgumentException("Email is invalid.");
+			}
+			if (validateDomainName(e.getHost())) {
+				return e.toString();
+			}
+			return null;
+		} else {
+			throw new IllegalArgumentException("Invalid Email - email is empty");
+		}
 	}
 
+	public static boolean validateDomainName(String s) {
+		int lastDot = -1;
+		String segment = "";
+		for (int i = 0; i < s.length(); i++) {
+			char c = s.charAt(i);
+			while (c == '.') {
+				segment = s.substring(s.charAt(lastDot + 1), s.charAt(i - 1));
+				if (segment.length() > 32 || segment.length() < 1) {
+					return false;
+				}
+				if (segment.matches("^[-].+") || segment.matches(".+[-]$") || segment.matches("^[-]$")) {
+					return false;
+				}
+				if (segment.matches("^[A-Za-z0-9-]+$")) {
+					return true;
+				}
+				lastDot = i;
+			}
+		}
+		return false;
+	}
 }
