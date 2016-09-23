@@ -17,14 +17,12 @@ public enum DawsonHotelFactory implements HotelFactory {
 
 	@Override
 	public CreditCard getCard(String cardtype, String number) {
-		return CreditCard.getInstance(
-				CreditCard.CardType.valueOf(cardtype.toUpperCase()), number);
+		return CreditCard.getInstance(CreditCard.CardType.valueOf(cardtype.toUpperCase()), number);
 	}
 
 	@Override
 	public Room getRoomInstance(int roomNumber, String roomtype) {
-		return new DawsonRoom(roomNumber, 
-				RoomType.valueOf(roomtype.toUpperCase()));
+		return new DawsonRoom(roomNumber, RoomType.valueOf(roomtype.toUpperCase()));
 	}
 
 	@Override
@@ -33,16 +31,11 @@ public enum DawsonHotelFactory implements HotelFactory {
 		return new DawsonReservation(aCustomer, aRoom, inYear, inMonth, inDay, outYear, outMonth, outDay);
 	}
 
-
 	@Override
 	public Reservation getReservationInstance(Reservation toCopy) {
-		return new DawsonReservation(toCopy.getCustomer(),
-				toCopy.getRoom(),
-				toCopy.getCheckInDate().getYear(),
-				toCopy.getCheckInDate().getMonthValue(),
-				toCopy.getCheckInDate().getDayOfMonth(), 
-				toCopy.getCheckOutDate().getYear(),
-				toCopy.getCheckOutDate().getMonthValue(),
+		return  new DawsonReservation(toCopy.getCustomer(), toCopy.getRoom(), toCopy.getCheckInDate().getYear(),
+				toCopy.getCheckInDate().getMonthValue(), toCopy.getCheckInDate().getDayOfMonth(),
+				toCopy.getCheckOutDate().getYear(), toCopy.getCheckOutDate().getMonthValue(),
 				toCopy.getCheckOutDate().getDayOfMonth());
 	}
 
