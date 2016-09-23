@@ -118,7 +118,7 @@ public class Email implements Serializable, Comparable<Email> {
 			if (validateDomainName(e.getHost())) {
 				return e.toString();
 			}
-			return null;
+			throw new IllegalArgumentException("Invalid Email.");
 		} else {
 			throw new IllegalArgumentException("Invalid Email - email is empty");
 		}
