@@ -82,6 +82,9 @@ public class DawsonReservationTest {
 				+  "\n\t" + TestRes2.getNumberDays());
 		System.out.println("Case 15 - getNumberDays data - Expeting 9"
 				+  "\n\t" + TestRes3.getNumberDays());
+		
+		System.out.println("Case 16 - getRoom data"
+				+  "\n\t" + TestRes3.getRoom());
 
 	}
 

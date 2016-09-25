@@ -36,6 +36,8 @@ public class DawsonCustomerTest {
 			    + "\n\t" + customer1.equals(customer1));
 		System.out.println("Case 4 - equals data - Invalid "
 				+ "\n\t" + customer1.equals(customer2));
+		System.out.println("Case 5 - equals data - Invalid "
+				+ "\n\t" + customer2.equals(customer1));
 
 	}
 
