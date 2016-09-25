@@ -5,7 +5,10 @@ import java.io.Serializable;
 public interface CreditCard extends Serializable {
 	String getNumber();
 	CardType getType();
-
+	
+	/* @return credit card
+	 * @param type, number
+	 */
 	// Credit card factory method based on the type
 	public static CreditCard getInstance(CardType type, String number) {
 		CreditCard card = null;
