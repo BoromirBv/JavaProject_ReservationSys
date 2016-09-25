@@ -3,8 +3,8 @@ package dw317.hotel.business.interfaces;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-/* @author Nicolas Fontaine
- * 
+/*
+ * @author Nicolas Fontaine
  */
 
 public interface Reservation extends Comparable<Reservation>, Serializable{
