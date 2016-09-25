@@ -37,13 +37,9 @@ public class Email implements Serializable, Comparable<Email> {
 			return true;
 		}
 		if (this.getClass() == object.getClass()) {
-			return true;
-		}
-		if (this.getAddress() == ((Email) object).getAddress()) {
-			return true;
-		}
-		if (this.hashCode() == object.hashCode()) {
-			return true;
+			if (this.getAddress().equals(((Email) object).getAddress())) {
+				return true;
+			}
 		}
 		return false;
 	}
