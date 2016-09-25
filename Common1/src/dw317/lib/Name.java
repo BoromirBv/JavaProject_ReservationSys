@@ -1,6 +1,3 @@
-/**
- * 
- */
 package dw317.lib;
 
 import java.io.Serializable;
@@ -22,31 +19,29 @@ public class Name implements Serializable {
 		this.lastName = validateName(lastName);
 	}
 
-	/**
-	 * @return the firstName
+	/* @return the firstName
+	 * 
 	 */
 	public String getFirstName() {
 		return firstName;
 	}
 
-	/**
-	 * @return the lastName
+	/* @return the lastName
+	 * 
 	 */
 	public String getLastName() {
 		return lastName;
 	}
 
-	/**
-	 * @param firstName
-	 *            the firstName to set
+	/* @param firstName
+	 * 
 	 */
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
 
-	/**
-	 * @param lastName
-	 *            the lastName to set
+	/* @param lastName
+	 * 
 	 */
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
@@ -61,12 +56,10 @@ public class Name implements Serializable {
 	public String toString() {
 		return (firstName + "*" + lastName);
 	}
-	/** 
-	 * @author Nicolas Fontaine
+	/* @author Nicolas Fontaine
 	 * @return first name as a string if true. Throw exception if not valid.
 	 */
 	public static String validateName(String firstOrLast) {
-		//TODO change docs
 		String firstOrLastCopy = firstOrLast.toLowerCase();
 		if (firstOrLastCopy != null) {
 			if (firstOrLastCopy.length() < 2 || 

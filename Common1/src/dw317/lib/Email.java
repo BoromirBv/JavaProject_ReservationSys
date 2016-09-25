@@ -1,6 +1,3 @@
-/**
- * 
- */
 package dw317.lib;
 
 import java.io.Serializable;
@@ -14,53 +11,19 @@ public class Email implements Serializable, Comparable<Email> {
 	private final static long serialVersionUID = 42031768871L;
 	private final String address;
 	
-	/** @param cardType, number
+	/* @param cardType, number
 	 * 
 	 */
 	public Email(String address) {
 		this.address = validateEmail(address);
 	}
 
-	/** @author Nicolas Fontaine
-	 * @return tmp, a copy of the address
-	 */
-	public String getAddress() {
-		String tmp = address;
-		return tmp;
+	@Override
+	public int compareTo(Email arg0) {
+		return 0;
 	}
-
-	/** @author Nicolas Fontaine
-	 * @return user id from the email address.
-	 */
-	public String getUserId() {
-		String s = "";
-		for (int i = 0; i < address.length(); i++) {
-			char c = address.charAt(i);
-			if (c != '@') {
-				s += c;
-			} else
-				return s;
-		}
-		return s;
-	}
-
-	/** @author Nicolas Fontaine
-	 * @return hostname from the email address.
-	 */
-	public String getHost() {
-		String s = "";
-		int count = 0;
-		for (int i = 0; i < address.length(); i++) {
-			char c = address.charAt(i);
-			if (c == '@') {
-				count = address.charAt(i);
-				return address.substring(count + 1, address.length() - 1);
-			}
-		}
-		return s;
-	}
-
-	/** @author Nicolas Fontaine
+	
+	/* @author Nicolas Fontaine
 	 * @return boolean if the emails are equal. Two emails are equal if
 	 * they have the same reference, are the same object, have the same class,
 	 * have the same address, or have the same hash code.
@@ -85,14 +48,48 @@ public class Email implements Serializable, Comparable<Email> {
 		return false;
 	}
 
+	/* @author Nicolas Fontaine
+	 * @return tmp, a copy of the address
+	 */
+	public String getAddress() {
+		String tmp = address;
+		return tmp;
+	}
+	
+	/* @author Nicolas Fontaine
+	 * @return hostname from the email address.
+	 */
+	public String getHost() {
+		String s = "";
+		int count = 0;
+		for (int i = 0; i < address.length(); i++) {
+			char c = address.charAt(i);
+			if (c == '@') {
+				count = address.charAt(i);
+				return address.substring(count + 1, address.length() - 1);
+			}
+		}
+		return s;
+	}
+
+	/* @author Nicolas Fontaine
+	 * @return user id from the email address.
+	 */
+	public String getUserId() {
+		String s = "";
+		for (int i = 0; i < address.length(); i++) {
+			char c = address.charAt(i);
+			if (c != '@') {
+				s += c;
+			} else
+				return s;
+		}
+		return s;
+	}
+
 	public final int hashCode() {
 		
 		return this.hashCode();
-	}
-
-	@Override
-	public int compareTo(Email arg0) {
-		return 0;
 	}
 
 	@Override
@@ -100,12 +97,12 @@ public class Email implements Serializable, Comparable<Email> {
 		return address;
 	}
 	
-	/** @author Nicolas Fontaine
+	/* @author Nicolas Fontaine
 	 * @return email, the email address
 	 * @param email
 	 */
 	private static String validateEmail(String email) throws IllegalArgumentException {
-		if (email != null) {
+		/*if (email != null) {
 			Email e = new Email(email);
 			if (e.getUserId().length() < 1 || e.getUserId().length() > 32) {
 				throw new IllegalArgumentException("Email length isn't valid.");
@@ -121,7 +118,8 @@ public class Email implements Serializable, Comparable<Email> {
 			throw new IllegalArgumentException("Invalid Email.");
 		} else {
 			throw new IllegalArgumentException("Invalid Email - email is empty");
-		}
+		}*/
+		return email;
 	}
 
 	public static boolean validateDomainName(String s) {
