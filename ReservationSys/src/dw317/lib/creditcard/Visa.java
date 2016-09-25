@@ -1,25 +1,24 @@
 package dw317.lib.creditcard;
 
 /**
- * @author Jephthia Louis, Andreea Draghicescu
+ * @author Andreea Draghicescu
  *
  */
 
 public class Visa extends AbstractCreditCard {
 	private static final long serialVersionUID = 42031768871L;
 
-	/*
-	 * @author Jephthia Louis
-	 *
-	 */
+	 /*
+	  * @param number
+	  */
 	public Visa(String number) {
 		super(CardType.VISA, validateNumber(number));
 	}
 
 	/*
 	 * @author Andreea Draghicescu
-	 * 
 	 * @return the number if it is 16 digits long and the first digit is 4.
+	 * @param number
 	 */
 	private static String validateNumber(String number) throws IllegalArgumentException {
 		// Test if the number is null and throws and exception if true.

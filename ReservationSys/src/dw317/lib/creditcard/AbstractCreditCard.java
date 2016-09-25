@@ -10,9 +10,8 @@ public abstract class AbstractCreditCard implements CreditCard {
 	private final CardType cardType;
 	private final String number;
 	
-	/*
-	 *  @author Andreea Draghicescu
-	 *  @param cardType, number
+	/* @author Andreea Draghicescu
+	 * @param cardType, number
 	 */
 	public AbstractCreditCard(CardType cardType, String number) 
 			throws IllegalArgumentException {
@@ -28,7 +27,7 @@ public abstract class AbstractCreditCard implements CreditCard {
 	 * @param object of type Object, that will be compare to an 
 	 * 				 AbstractCreditCard instance.
 	 */
-	public boolean equals(Object object) {
+	public final boolean equals(Object object) {
 		if (object == null) { // If empty, returns false.
 			return false;
 		}		
@@ -43,24 +42,36 @@ public abstract class AbstractCreditCard implements CreditCard {
 			if (a.getType() == this.cardType && a.getNumber() == this.number) {
 				return true;
 			}
+			/*if(a.hashCode() == this.hashCode()) { //same hashCode
+				return true;
+			}*/
 		}
 		return false;
+	}
+	/* @author Andreea Draghicescu
+	 * @return hashCode
+	 */
+	@Override
+	public final int hashCode(){
+		return 0;
 	}
 
 	@Override
 	/* @author Andreea Draghicescu
-	 * @return the number
+	 * @return tmp, a copy of the number
 	 */
 	public String getNumber() {
-		return this.number;
+		String tmp = number;
+		return tmp;
 	}
 	
 	/* @author Andreea Draghicescu
-	 * @return the card type
+	 * @return tmp, a copy of CardType
 	 */
 	@Override
 	public CardType getType() {
-		return this.cardType;
+		CardType tmp = this.cardType;
+		return tmp;
 	}
 
 	@Override
@@ -77,25 +88,20 @@ public abstract class AbstractCreditCard implements CreditCard {
 	 */
 	private static String validateLuhnAlgorithm(String number) 
 			throws IllegalArgumentException { 
-		/*
+		/* 
 		 * Throws an exception when if the string conversion to a numeric 
 		 * type fails, if the string format is invalid.
  	     */
 		try {
 			int total = 0, index = 0;
 			char [] reverseArray = number.toCharArray();
-			System.out.println(reverseArray);
 			for (int i = 0; i < reverseArray.length / 2; i++) { 
 				//Reverse the array so it starts from the right
 				int temp = reverseArray[i];
 				reverseArray[i] = reverseArray[reverseArray.length - 1 - i];
 				reverseArray[reverseArray.length - 1 - i] = (char) temp;
 			}
-			System.out.println(reverseArray);
-			
 			for (char c : reverseArray) {
-				System.out.println("index: " + index);
-				System.out.println("c: "+c);
 				// Converts the String character to an integer.
 				int currDigit = c - '0';
 				if (index % 2 == 1) {
@@ -105,7 +111,6 @@ public abstract class AbstractCreditCard implements CreditCard {
 				}
 				index++; // Next index
 				total += currDigit;
-				System.out.println("total: "+total);
 			}
 			if (total % 10 == 0) {
 				return number; // If equal to  0, the card is valid.

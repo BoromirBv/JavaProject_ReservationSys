@@ -1,26 +1,25 @@
 package dw317.lib.creditcard;
 
 /**
- * @author Jephthia Louis, Andreea Draghicescu
+ * @author Andreea Draghicescu
  *
  */
 
 public class MasterCard extends AbstractCreditCard {
 	private static final long serialVersionUID = 42031768871L;
 
-	/*
-	 * @author Jephthia Louis
-	 *
-	 */
+	 /*
+	  * @param number
+	  */
 	public MasterCard(String number) {
 		super(CardType.MASTERCARD, validateNumber(number));
 	}
 
 	/*
 	 * @author Andreea Draghicescu
-	 * 
 	 * @return the number if it is 16 digits long and the first two digits are
 	 * in the 51 to 55 range.
+	 * @param number
 	 */
 	private static String validateNumber(String number) throws IllegalArgumentException {
 		// Test if the number is null and throws and exception if true.
