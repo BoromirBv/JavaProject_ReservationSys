@@ -63,7 +63,7 @@ public class DawsonCustomerTest {
 			System.out.print("\t" + npe.getMessage());
 			if (expectValid)
 				System.out.print("Error! Expected Valid. ==== FAILED TEST ====");
-		}catch (Exception e) {
+		} catch (Exception e) {
 			System.out.print(
 					"\tUNEXPECTED EXCEPTION TYPE! " + e.getClass() 
 					+ " " + e.getMessage() + " ==== FAILED TEST ====");
