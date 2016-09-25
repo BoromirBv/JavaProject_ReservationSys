@@ -19,7 +19,8 @@ public class DawsonCustomer implements Customer {
 	public DawsonCustomer(String firstName, String lastName, String email) {
 		this.name = new Name(firstName, lastName);
 		this.email = new Email(email);
-		creditCard = null;
+		//Initiate to .empty() which is equivalent to .ofNullable(null)
+		creditCard = Optional.empty();
 	}
 	
 	/* @author Jephthia Louis
@@ -39,17 +40,17 @@ public class DawsonCustomer implements Customer {
 	 */
 	@Override
 	public boolean equals(Object object) {
-		if (object == null)
+		if (object == null){
 			return false;
-
-		if (this == object)
+		}
+		if (this == object){
 			return true;
-
+		}
 		if (object instanceof DawsonCustomer) {
 			DawsonCustomer customer = (DawsonCustomer) object;
-
-			if (getEmail().equals(customer.getEmail()))
+			if (getEmail().equals(customer.getEmail())){
 				return true;
+			}
 		}
 
 		return false;
