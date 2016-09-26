@@ -19,7 +19,6 @@ public abstract class AbstractCreditCard implements CreditCard {
 		this.number = validateLuhnAlgorithm(number);
 	}
 
-	@Override
 	/** 
 	 * @author Jephthia Louis, Andreea Draghicescu, Nicolas Fontaine
 	 * Two credit card objects are considered equal if they are of the same
@@ -28,6 +27,7 @@ public abstract class AbstractCreditCard implements CreditCard {
 	 * @param object of type Object, that will be compare to an 
 	 * 				 AbstractCreditCard instance.
 	 */
+	@Override
 	public final boolean equals(Object object) {
 		if (object == null) { // If empty, returns false.
 			return false;
@@ -43,9 +43,6 @@ public abstract class AbstractCreditCard implements CreditCard {
 			if (a.getType() == this.cardType && a.getNumber() == this.number) {
 				return true;
 			}
-			if(a.hashCode() == this.hashCode()) { //same hashCode
-				return true;
-			}
 		}
 		return false;
 	}
@@ -55,7 +52,7 @@ public abstract class AbstractCreditCard implements CreditCard {
 	 */
 	@Override
 	public final int hashCode(){
-		return 0;
+		return 37 + (this.getType() == null ? 0 : this.getType().hashCode());
 	}
 
 	/** 
