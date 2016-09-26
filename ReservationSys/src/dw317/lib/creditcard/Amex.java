@@ -2,23 +2,26 @@ package dw317.lib.creditcard;
 
 /**
  * @author Andreea Draghicescu
- *
  */
 
 public class Amex extends AbstractCreditCard {
 	private static final long serialVersionUID = 42031768871L;
 
-	 /*
+	 /**
 	  * @param number
 	  */
 	public Amex(String number) {
 		super(CardType.AMEX, validateNumber(number));
 	}
 
-	/* @author Andreea Draghicescu
+	/** 
+	 * @author Andreea Draghicescu
 	 * @return the number if it is 15 digits long and the first two digits are
 	 * 34 or 37.
 	 * @param number
+	 * @throws IllegalArgumentException if string is empty, has invalid characters, is too long
+	 * 				or first two digits are invalid.
+	 * 	  	   NullPointerException if null
 	 */
 	private static String validateNumber(String number) throws IllegalArgumentException {
 		// Test if the number is null and throws and exception if true.

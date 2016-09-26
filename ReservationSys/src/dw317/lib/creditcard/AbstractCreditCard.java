@@ -2,7 +2,6 @@ package dw317.lib.creditcard;
 
 /**
  * @author Jephthia Louis, Andreea Draghicescu, Nicolas Fontaine
- *
  */
 
 public abstract class AbstractCreditCard implements CreditCard {
@@ -10,7 +9,8 @@ public abstract class AbstractCreditCard implements CreditCard {
 	private final CardType cardType;
 	private final String number;
 	
-	/** @author Andreea Draghicescu
+	/** 
+	 * @author Andreea Draghicescu
 	 * @param cardType, number
 	 */
 	public AbstractCreditCard(CardType cardType, String number) 
@@ -20,7 +20,8 @@ public abstract class AbstractCreditCard implements CreditCard {
 	}
 
 	@Override
-	/** @author Jephthia Louis, Andreea Draghicescu, Nicolas Fontaine
+	/** 
+	 * @author Jephthia Louis, Andreea Draghicescu, Nicolas Fontaine
 	 * Two credit card objects are considered equal if they are of the same
 	 * class and their type and number are equal.
 	 * @return boolean
@@ -42,13 +43,14 @@ public abstract class AbstractCreditCard implements CreditCard {
 			if (a.getType() == this.cardType && a.getNumber() == this.number) {
 				return true;
 			}
-			/*if(a.hashCode() == this.hashCode()) { //same hashCode
+			if(a.hashCode() == this.hashCode()) { //same hashCode
 				return true;
-			}*/
+			}
 		}
 		return false;
 	}
-	/** @author Andreea Draghicescu
+	/** 
+	 * @author Jephthia Louis
 	 * @return hashCode
 	 */
 	@Override
@@ -56,7 +58,8 @@ public abstract class AbstractCreditCard implements CreditCard {
 		return 0;
 	}
 
-	/** @author Andreea Draghicescu
+	/** 
+	 * @author Andreea Draghicescu
 	 * @return tmp, a copy of the number
 	 */
 	@Override
@@ -65,7 +68,8 @@ public abstract class AbstractCreditCard implements CreditCard {
 		return tmp;
 	}
 	
-	/** @author Andreea Draghicescu
+	/** 
+	 * @author Andreea Draghicescu
 	 * @return tmp, a copy of CardType
 	 */
 	@Override
@@ -74,7 +78,8 @@ public abstract class AbstractCreditCard implements CreditCard {
 		return tmp;
 	}
 
-	/** @author Andreea Draghicescu
+	/** 
+	 * @author Andreea Draghicescu
 	 * @return the card type and number in a string separated by a '*'.
 	 */
 	@Override
@@ -82,9 +87,11 @@ public abstract class AbstractCreditCard implements CreditCard {
 		return (cardType + "*" + number);
 	}
 
-	/** @author Jephthia Louis
+	/** 
+	 * @author Jephthia Louis
 	 * @return the number (if valid)
 	 * @param number This is the credit card number that will be validated
+	 * @throws IllegalArgumentException if the number is not valid.
 	 */
 	private static String validateLuhnAlgorithm(String number) 
 			throws IllegalArgumentException { 
@@ -116,7 +123,7 @@ public abstract class AbstractCreditCard implements CreditCard {
 				return number; // If equal to  0, the card is valid.
 			}
 			else {
-				throw new IllegalArgumentException ("Invalid Card Number: " + number + ".");
+				throw new IllegalArgumentException (" LuhnAlgorith: Invalid Card Number: " + number + ".");
 			}
 
 		} catch (NumberFormatException e) {
