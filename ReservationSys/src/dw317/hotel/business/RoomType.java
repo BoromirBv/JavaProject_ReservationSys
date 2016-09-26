@@ -1,13 +1,14 @@
 package dw317.hotel.business;
 
-/** @author Jephthia Louis
- * 
+/** 
+ * @author Jephthia Louis
  */
 
 public enum RoomType {
 	NORMAL, SUITE, PENTHOUSE;
 	
-	/** @author Jephthia Louis
+	/** 
+	 * @author Jephthia Louis
 	 * @return a lowercase string of the type
 	 */
 	@Override
