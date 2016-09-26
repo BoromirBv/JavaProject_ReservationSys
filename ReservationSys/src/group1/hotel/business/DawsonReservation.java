@@ -60,9 +60,6 @@ public class DawsonReservation implements Reservation {
 				return true;
 			}
 		}
-		if(this.hashCode() == object.hashCode()) {
-			return true;
-		}
 		return false;
 	}
 
@@ -121,8 +118,10 @@ public class DawsonReservation implements Reservation {
 	 */
 	@Override
 	public final int hashCode() {
-
-		return 0;
+		return 37 + (this.getCheckInDate() == null ? 0 : this.getCheckInDate().hashCode())
+			+ (this.getCheckOutDate() == null ? 0 : this.getCheckOutDate().hashCode())
+			+ (this.getRoom() == null ? 0 : this.getRoom().hashCode())
+			+ (this.getCustomer() == null ? 0 : this.getCustomer().hashCode());
 	}
 	
 	/** 
