@@ -82,7 +82,7 @@ public class DawsonCustomer implements Customer {
 
 	@Override
 	public int hashCode() {
-		return 0;
+		return 37 + (getEmail() == null ? 0 : getEmail().hashCode());
 	}
 	
 	/* @author Jephthia Louis
