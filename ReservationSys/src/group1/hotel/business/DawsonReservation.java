@@ -103,7 +103,7 @@ public class DawsonReservation implements Reservation {
 	 */
 	@Override
 	public Room getRoom() {
-		Room a = new DawsonRoom(room.getNumber(), room.getRoomType());
+		Room a = new DawsonRoom(room.getRoomNumber(), room.getRoomType());
 		return a;
 	}
 	
