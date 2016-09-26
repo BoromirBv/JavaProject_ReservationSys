@@ -10,7 +10,8 @@ public class CreditCardTest {
 		testCreditCardConstructor();
 	}
 
-	/* @author Andreea Draghicescu 
+	/**
+	 * @author Andreea Draghicescu 
 	 * Tests the credit card number for different cases. The boolean represent 
 	 * what we expect the case to return. If it returns the opposite, the test has failed.
 	 */
@@ -39,7 +40,8 @@ public class CreditCardTest {
 				+ CreditCard.getInstance(typeVisa, "4556737586899855").equals(CreditCard.getInstance(typeVisa, "4532225872064086")));
 	}
 
-	/* @author Andreea Draghicescu.
+	/**
+	 * @author Andreea Draghicescu.
 	 * @param testCase, number, expectValid Creates an instance of CreditCard if
 	 * it is a valid credit card and the case are successful or not.
 	 */

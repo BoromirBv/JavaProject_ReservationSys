@@ -9,7 +9,8 @@ public class AmexTest {
 		testAmexConstructor();
 	}
 
-	/* @author Andreea Draghicescu 
+	/**
+	 * @author Andreea Draghicescu 
 	 * Tests the credit card number for different cases. The boolean represent 
 	 * what we expect the case to return. If it returns the opposite, the test has failed.
 	 */
@@ -31,7 +32,8 @@ public class AmexTest {
 
 	}
 
-	/* @author Andreea Draghicescu.
+	/**
+	 * @author Andreea Draghicescu.
 	 * @param testCase, number, expectValid 
 	 * Creates an instance of Amex if it is a valid credit card and the 
 	 * case are successful or not.

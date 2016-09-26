@@ -10,7 +10,8 @@ public class VisaTest {
 		testVisaConstructor();
 	}
 
-	/* @author Andreea Draghicescu 
+	/**
+	 * @author Andreea Draghicescu 
 	 * Tests the credit card number for different cases. The boolean represent 
 	 * what we expect the case to return. If it returns the opposite, the test has failed.
 	 */
@@ -28,7 +29,8 @@ public class VisaTest {
 
 	}
 
-	/* @author Andreea Draghicescu.
+	/**
+	 * @author Andreea Draghicescu.
 	 * @param testCase, number, expectValid
 	 * Creates an instance of Visa if it is a valid credit card and the 
 	 * case are successful or not.
