@@ -90,7 +90,7 @@ public class DawsonRoom implements Room {
 
 	@Override
 	public final int hashCode() {
-		return 0;
+		return 31 + getRoomNumber() + (getRoomType() == null ? 0 : getRoomType().name().hashCode());
 	}
 	
 	/* @author Jephthia Louis
