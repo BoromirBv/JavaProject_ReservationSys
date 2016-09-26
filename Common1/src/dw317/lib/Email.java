@@ -3,35 +3,38 @@ package dw317.lib;
 import java.io.Serializable;
 
 /**
- * @author Nicolas Fontaine
- *
+ * @author Nicolas Fontaine and Jephthia Louis
  */
 public class Email implements Serializable, Comparable<Email> {
 
 	private final static long serialVersionUID = 42031768871L;
 	private final String address;
 	
-	/** @param cardType, number
-	 * 
+	/** 
+	 * @param address
 	 */
 	public Email(String address) {
 		this.address = validateEmail(address);
 	}
 
-	/** @author Jephthia Louis
+	/** 
+	 * @author Jephthia Louis
+	 * @param email
 	 * Compares 2 emails by the order of the host name followed by the user id, 
 	 * all case-insensitive
 	 */
 	@Override
 	public int compareTo(Email email) {
-		String full = getHost()+getUserId();
-		return full.compareToIgnoreCase(email.getHost()+email.getUserId());
+		String full = this.getHost() + this.getUserId();
+		return full.compareToIgnoreCase(email.getHost() + email.getUserId());
 	}
 	
-	/** @author Nicolas Fontaine
+	/** 
+	 * @author Nicolas Fontaine
 	 * @return boolean if the emails are equal. Two emails are equal if
 	 * they have the same reference, are the same object, have the same class,
 	 * have the same address, or have the same hash code.
+	 * @param object
 	 */
 	@Override
 	public final boolean equals(Object object) {
@@ -46,10 +49,14 @@ public class Email implements Serializable, Comparable<Email> {
 				return true;
 			}
 		}
+		if(this.hashCode() == object.hashCode()) {
+			return true;
+		}
 		return false;
 	}
 
-	/** @author Nicolas Fontaine
+	/** 
+	 * @author Nicolas Fontaine
 	 * @return tmp, a copy of the address
 	 */
 	public String getAddress() {
@@ -57,35 +64,39 @@ public class Email implements Serializable, Comparable<Email> {
 		return tmp;
 	}
 	
-	/** @author Nicolas Fontaine
+	/**
+	 * @author Nicolas Fontaine
 	 * @return hostname from the email address.
 	 */
 	public String getHost() {
 		String s = "";
-		int count = 0;
 		for (int i = 0; i < address.length(); i++) {
 			char c = address.charAt(i);
 			if (c == '@') {
-				count = address.charAt(i);
-				return address.substring(count + 1, address.length() - 1);
+				return address.substring(i + 1, address.length() - 1);
 			}
 		}
 		return s;
 	}
+	/**
+	 * @author Nicolas Fontaine
+	 * @return hostname from the email address.
+	 * Used for validation.
+	 */
 	private static String getHost(String b) {
 		String s = "";
-		int count = 0;
 		for (int i = 0; i < b.length(); i++) {
 			char c = b.charAt(i);
 			if (c == '@') {
-				count = b.charAt(i);
-				return b.substring(count + 1, address.length() - 1);
+				return b.substring(i + 1, b.length() - 1);
 			}
 		}
+		
 		return s;
 	}
 
-	/** @author Nicolas Fontaine
+	/** 
+	 * @author Nicolas Fontaine
 	 * @return user id from the email address.
 	 */
 	public String getUserId() {
@@ -99,6 +110,12 @@ public class Email implements Serializable, Comparable<Email> {
 		}
 		return s;
 	}
+	
+	/** 
+	 * @author Nicolas Fontaine
+	 * @return user id from the email address.
+	 * Used for validation.
+	 */
 	private static String getUserId(String b) {
 		String s = "";
 		for (int i = 0; i < b.length(); i++) {
@@ -111,6 +128,10 @@ public class Email implements Serializable, Comparable<Email> {
 		return s;
 	}
 	
+	/** 
+	 * @author Jephthia Louis
+	 * @return the hashcode generated
+	 */
 	@Override
 	public final int hashCode() {
 		return 37 + (getAddress() == null ? 0 : getAddress().hashCode());
@@ -121,9 +142,11 @@ public class Email implements Serializable, Comparable<Email> {
 		return address;
 	}
 	
-	/** @author Nicolas Fontaine
+	/** 
+	 * @author Nicolas Fontaine
 	 * @return email, the email address
 	 * @param email
+	 * @throws IllegalArgumentException if length, userId, domain, are invalid or email is empty.
 	 */
 	private static String validateEmail(String email) throws IllegalArgumentException {
 		if (email != null) {
@@ -133,25 +156,29 @@ public class Email implements Serializable, Comparable<Email> {
 			if (!getUserId(email).matches("^[A-Za-z0-9_.-]+$") || getUserId(email).matches("^[.].+")
 					|| getUserId(email).matches(".+[.]$") || getUserId(email).matches("^[.]$")
 					|| getUserId(email).matches(".*[.][.].*")) {
-				throw new IllegalArgumentException("Email is invalid.");
+				throw new IllegalArgumentException("Email is invalid - Invalid UserID");
 			}
 			if (validateDomainName(getHost(email))) {
-				return e.toString();
+				return email;
 			}
-			throw new IllegalArgumentException("Invalid Email.");
+			throw new IllegalArgumentException("Invalid Email - Invalid Domain.");
 		} else {
 			throw new IllegalArgumentException("Invalid Email - email is empty");
 		}
-		return email;
 	}
-
+	
+	/** 
+	 * @author Nicolas Fontaine
+	 * @return boolean if the domain is valid
+	 * @param string of the domain
+	 */
 	public static boolean validateDomainName(String s) {
 		int lastDot = -1;
 		String segment = "";
 		for (int i = 0; i < s.length(); i++) {
 			char c = s.charAt(i);
 			while (c == '.') {
-				segment = s.substring(s.charAt(lastDot + 1), s.charAt(i - 1));
+				segment = s.substring(lastDot + 1, i - 1);
 				if (segment.length() > 32 || segment.length() < 1) {
 					return false;
 				}
