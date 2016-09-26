@@ -10,7 +10,7 @@ public abstract class AbstractCreditCard implements CreditCard {
 	private final CardType cardType;
 	private final String number;
 	
-	/* @author Andreea Draghicescu
+	/** @author Andreea Draghicescu
 	 * @param cardType, number
 	 */
 	public AbstractCreditCard(CardType cardType, String number) 
@@ -20,7 +20,7 @@ public abstract class AbstractCreditCard implements CreditCard {
 	}
 
 	@Override
-	/* @author Jephthia Louis, Andreea Draghicescu, Nicolas Fontaine
+	/** @author Jephthia Louis, Andreea Draghicescu, Nicolas Fontaine
 	 * Two credit card objects are considered equal if they are of the same
 	 * class and their type and number are equal.
 	 * @return boolean
@@ -48,7 +48,7 @@ public abstract class AbstractCreditCard implements CreditCard {
 		}
 		return false;
 	}
-	/* @author Andreea Draghicescu
+	/** @author Andreea Draghicescu
 	 * @return hashCode
 	 */
 	@Override
@@ -56,16 +56,16 @@ public abstract class AbstractCreditCard implements CreditCard {
 		return 0;
 	}
 
-	@Override
-	/* @author Andreea Draghicescu
+	/** @author Andreea Draghicescu
 	 * @return tmp, a copy of the number
 	 */
+	@Override
 	public String getNumber() {
 		String tmp = number;
 		return tmp;
 	}
 	
-	/* @author Andreea Draghicescu
+	/** @author Andreea Draghicescu
 	 * @return tmp, a copy of CardType
 	 */
 	@Override
@@ -74,15 +74,15 @@ public abstract class AbstractCreditCard implements CreditCard {
 		return tmp;
 	}
 
-	@Override
-	/* @author Andreea Draghicescu
+	/** @author Andreea Draghicescu
 	 * @return the card type and number in a string separated by a '*'.
 	 */
+	@Override
 	public String toString() {
 		return (cardType + "*" + number);
 	}
 
-	/* @author Jephthia Louis
+	/** @author Jephthia Louis
 	 * @return the number (if valid)
 	 * @param number This is the credit card number that will be validated
 	 */
