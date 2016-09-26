@@ -17,7 +17,8 @@ public class DawsonRoom implements Room {
 		this.roomType = roomType;
 	}
 	
-	/* @author Jephthia Louis
+	/**
+	 * @author Jephthia Louis
 	 * @return int
 	 * @param room
 	 */
@@ -32,7 +33,8 @@ public class DawsonRoom implements Room {
 		return 0;
 	}
 	
-	/* @author Jephthia Louis
+	/**
+	 * @author Jephthia Louis
 	 * @return boolean if the objects are equal or not. Two Room objects 
 	 * are considered equal if they are of the instanceof the
 	 * same class and their room number attributes are equal.
@@ -53,10 +55,14 @@ public class DawsonRoom implements Room {
 				if (getRoomType().name().equals(room.getRoomType().name()))
 					return true;
 		}
+		if(this.hashCode() == object.hashCode()) {
+			return true;
+		}
 		return false;
 	}
 	
-	/* @author Jephthia Louis
+	/**
+	 * @author Jephthia Louis
 	 * @return floor number
 	 */
 	@Override
@@ -64,7 +70,8 @@ public class DawsonRoom implements Room {
 		return getRoomNumber() / 100;
 	}
 	
-	/* @author Jephthia Louis
+	/**
+	 * @author Jephthia Louis
 	 * @return room number on floor.
 	 */
 	@Override
@@ -72,7 +79,8 @@ public class DawsonRoom implements Room {
 		return getRoomNumber() % 100;
 	}
 	
-	/* @author Jephthia Louis
+	/**
+	 * @author Jephthia Louis
 	 * @return room number
 	 */
 	@Override
@@ -80,27 +88,35 @@ public class DawsonRoom implements Room {
 		return roomNumber;
 	}
 	
-	/* @author Jephthia Louis
+	/**
+	 * @author Jephthia Louis
 	 * @return room type
 	 */
 	@Override
 	public RoomType getRoomType() {
 		return roomType;
 	}
-
+	
+	/**
+	 * @author Jephthia Louis
+	 * @return the hash code
+	 */
 	@Override
 	public final int hashCode() {
 		return 31 + getRoomNumber() + (getRoomType() == null ? 0 : getRoomType().name().hashCode());
 	}
 	
-	/* @author Jephthia Louis
+	/**
+	 * @author Jephthia Louis
 	 * @return string of roon number and room type
 	 */
 	@Override
 	public String toString() {
 		return this.getRoomNumber() + "*" + this.getRoomType().toString();
 	}
-	/* @author Jephthia Louis
+	
+	/**
+	 * @author Jephthia Louis
 	 * @return valid room number.
 	 * @param roomNum
 	 * The room number is valid if the room number is between 1 and 8

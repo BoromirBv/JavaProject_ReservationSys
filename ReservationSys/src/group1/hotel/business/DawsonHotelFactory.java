@@ -10,7 +10,8 @@ import dw317.lib.creditcard.CreditCard;
 public enum DawsonHotelFactory implements HotelFactory {
 	DAWSON;
 	
-	/* @return the customer instance
+	/**
+	 * @return the customer instance
 	 * @param firstname, lastname, email
 	 */
 	@Override
@@ -18,7 +19,8 @@ public enum DawsonHotelFactory implements HotelFactory {
 		return new DawsonCustomer(firstName, lastName, email);
 	}
 	
-	/* @return credit card
+	/**
+	 * @return credit card
 	 * @param cardtype, number
 	 */
 	@Override
@@ -26,7 +28,8 @@ public enum DawsonHotelFactory implements HotelFactory {
 		return CreditCard.getInstance(CreditCard.CardType.valueOf(cardtype.toUpperCase()), number);
 	}
 	
-	/* @return the room instance
+	/**
+	 * @return the room instance
 	 * @param roomNumber, roomtype
 	 */
 	@Override
@@ -34,7 +37,8 @@ public enum DawsonHotelFactory implements HotelFactory {
 		return new DawsonRoom(roomNumber, RoomType.valueOf(roomtype.toUpperCase()));
 	}
 
-	/* @return new Reservation
+	/**
+	 * @return new Reservation
 	 * @param aCustomer, aRoom, inYear, inMonth, inDay, outYear, outMonth, outDay
 	 */
 	@Override
@@ -43,7 +47,8 @@ public enum DawsonHotelFactory implements HotelFactory {
 		return new DawsonReservation(aCustomer, aRoom, inYear, inMonth, inDay, outYear, outMonth, outDay);
 	}
 	
-	/* @return the reservation instance
+	/**
+	 * @return the reservation instance
 	 * @param toCopy
 	 */
 	@Override

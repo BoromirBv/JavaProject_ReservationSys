@@ -23,7 +23,8 @@ public class DawsonCustomer implements Customer {
 		creditCard = Optional.empty();
 	}
 	
-	/* @author Jephthia Louis
+	/**
+	 * @author Jephthia Louis
 	 * @return int
 	 * @param customer
 	 */
@@ -32,7 +33,8 @@ public class DawsonCustomer implements Customer {
 		return this.getEmail().compareTo(customer.getEmail());
 	}
 	
-	/* @author Jephthia Louis
+	/**
+	 * @author Jephthia Louis
 	 * @return boolean if the objects are equal or not. Two Customer objects are 
 	 * considered equal if they are instances of the same class and their 
 	 * email attributes are equal.
@@ -52,20 +54,24 @@ public class DawsonCustomer implements Customer {
 				return true;
 			}
 		}
+		if(this.hashCode() == object.hashCode()) {
+			return true;
+		}
 
 		return false;
 	}
 	
-	/* @author Jephthia Louis
+	/**
+	 * @author Jephthia Louis
 	 * @return the credit card.
 	 */
 	@Override
 	public Optional<CreditCard> getCreditCard() {
-		//might have to do deep copy, not sure yet
 		return this.creditCard;
 	}
 	
-	/* @author Jephthia Louis
+	/**
+	 * @author Jephthia Louis
 	 * @return the email address.
 	 */
 	@Override
@@ -73,28 +79,33 @@ public class DawsonCustomer implements Customer {
 		return email;
 	}
 	
-	/* @author Jephthia Louis
+	/**
+	 * @author Jephthia Louis
 	 * @return the name.
 	 */
 	@Override
 	public Name getName() {
 		return new Name(name.getFirstName(), name.getLastName());
 	}
-
+	
+	/**
+	 * @author Jephthia Louis
+	 * @return the hash code
+	 */
 	@Override
 	public final int hashCode() {
 		return 37 + (getEmail() == null ? 0 : getEmail().hashCode());
 	}
 	
-	/* @author Jephthia Louis
+	/**
+	 * @author Jephthia Louis
 	 * @param card
 	 */
 	@Override
 	public void setCreditCard(Optional<CreditCard> card) {
-		//might have to do deep copy, not sure yet
-		this.creditCard = card; 
 	}
-	/* @author Jephthia Louis
+	
+	/** @author Jephthia Louis
 	 * @return string of the parameters.
 	 */
 	@Override
