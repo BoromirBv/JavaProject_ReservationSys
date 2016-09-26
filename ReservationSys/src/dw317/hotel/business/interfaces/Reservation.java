@@ -3,7 +3,7 @@ package dw317.hotel.business.interfaces;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-/*
+/**
  * @author Nicolas Fontaine
  */
 
