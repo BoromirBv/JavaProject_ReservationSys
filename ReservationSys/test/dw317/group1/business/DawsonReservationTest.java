@@ -15,7 +15,8 @@ public class DawsonReservationTest {
 		testDawsonReservation();
 	}
 	
-	/* @author Andreea Draghicescu 
+	/**
+	 * @author Andreea Draghicescu 
 	 * Tests the DawsonReservation class for different cases. The boolean represent 
 	 * what we expect the case to return. If it returns the opposite, the test has failed.
 	 */
@@ -36,13 +37,14 @@ public class DawsonReservationTest {
 		DawsonReservation TestRes3= new DawsonReservation(customerValid1, roomValid1, 2016, 5, 10, 2016, 5, 19);
 		DawsonReservation TestRes4 = new DawsonReservation(customerValid2, roomValid1, 2016, 5, 15, 2016, 5, 20);
 		
-		//Constructor test
+		//Constructor test - Valid
 		testDawsonReservationConstructor( "Case 1 - Valid data – valid DawsonReservation", 
 				customerValid1, roomValid1, 2016, 9, 24, 2016, 9, 26, true);
 		
 		testDawsonReservationConstructor( "Case 2 - Valid data – valid DawsonReservation", 
 				customerValid2, roomValid2, 2016, 9, 27, 2016, 10, 1, true);
 		
+		//Constructor test - Invalid
 		testDawsonReservationConstructor( "Case 3 - Invalid data – "
 				+ "Invalid DawsonReservation: Checkin or checkout date invalid", 
 				customerValid1, roomValid1, 2016, 5, 3, 2016, 1, 26, false);
@@ -82,13 +84,11 @@ public class DawsonReservationTest {
 				+  "\n\t" + TestRes2.getNumberDays());
 		System.out.println("Case 15 - getNumberDays data - Expeting 9"
 				+  "\n\t" + TestRes3.getNumberDays());
-		
-		System.out.println("Case 16 - getRoom data"
-				+  "\n\t" + TestRes3.getRoom());
 
 	}
 
-	/* @author Andreea Draghicescu.
+	/**
+	 * @author Andreea Draghicescu.
 	 * @param testCase, customer, room, inYear, inMonth, inDay, outYear, outMonth, 
 	 * 		outDay, expectValid 
 	 * Creates an instance of DawsonReservation if it has valid parameters 
@@ -128,7 +128,8 @@ public class DawsonReservationTest {
 		System.out.println("\n");
 	}
 	
-	/* @author Andreea Draghicescu.
+	/**
+	 * @author Andreea Draghicescu.
 	 * @param testCase, res1, res2, expectValid
 	 * Tests the overlap method on two instances of DawsonReservation.
 	 */

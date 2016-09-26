@@ -17,7 +17,8 @@ public class DawsonHotelFactoryTest {
 		testDawsonHotelFactory();
 	}
 	
-	/* @author Andreea Draghicescu 
+	/**
+	 * @author Andreea Draghicescu 
 	 * Tests the DawsonHotelFactory enum for different cases. The boolean represent 
 	 * what we expect the case to return. If it returns the opposite, the test has failed.
 	 */
@@ -40,9 +41,12 @@ public class DawsonHotelFactoryTest {
 		testRoomInstance( "Case 3 - Valid data – valid RoomInstance", 108, "normal", true);
 		
 		testReservationInstance( "Case 4 - Valid data – valid ReservationInstance", 
-				DawsonHotelFactory.DAWSON.getCustomerInstance("Mamadou", "Mustapha", "goatislife@outlook.com"), DawsonHotelFactory.DAWSON.getRoomInstance(108, "normal"), 2016, 9, 24, 2016, 9, 26, true);
+				DawsonHotelFactory.DAWSON.getCustomerInstance("Mamadou", "Mustapha", "goatislife@outlook.com"), 
+					DawsonHotelFactory.DAWSON.getRoomInstance(108, "normal"), 2016, 9, 24, 2016, 9, 26, true);
 		
 		testReservationInstance( "Case 5 - Valid data – valid ReservationInstance", TestRes1, true);
+		
+		testReservationInstance( "Case 10 - Valid data – Valid ReservationInstance", TestRes1, true);
 		
 		//Test Cases - False
 		testCustomerInstance( "Case 6 - Invalid data – Invalid CustomerInstance", 
@@ -53,16 +57,17 @@ public class DawsonHotelFactoryTest {
 		testRoomInstance( "Case 8 - Invalid data – Invalid RoomInstance", 908, "normal", false);
 		
 		testReservationInstance( "Case 9 - Invaliddata – Invalid ReservationInstance", 
-				DawsonHotelFactory.DAWSON.getCustomerInstance("Mamadou", "Mustapha", "goatislife@outlook.com"), DawsonHotelFactory.DAWSON.getRoomInstance(108, "normal"), 2016, 9, 24, 2016, 9, 23, false);
+				DawsonHotelFactory.DAWSON.getCustomerInstance("Mamadou", "Mustapha", "goatislife@outlook.com"), 
+					DawsonHotelFactory.DAWSON.getRoomInstance(108, "normal"), 2016, 9, 24, 2016, 9, 23, false);
 		
-		testReservationInstance( "Case 10 - Invalid data – Invalid ReservationInstance", TestRes1, true);
 		
 
 		
 
 	}
 
-	/* @author Andreea Draghicescu.
+	/**
+	 * @author Andreea Draghicescu.
 	 * @param testCase, roomNumber, roomType, expectValid 
 	 * Creates an instance of DawsonRoom if it has valid parameters 
 	 * and the case are successful or not.
@@ -95,13 +100,19 @@ public class DawsonHotelFactoryTest {
 		System.out.println("\n");
 	}
 	
+	/**
+	 * @author Andreea Draghicescu.
+	 * @param testCase, cardtype, cardtype, expectValid 
+	 * Creates an instance of CreditCard if it has valid parameters 
+	 * and the case are successful or not.
+	 */
 	private static void testCard(String testCase, String cardtype, String number, boolean expectValid) {
 
 		System.out.println("   " + testCase);
 
 		try {
 			
-			System.out.print("\tThe Customer instance was created: " 
+			System.out.print("\tThe Card instance was created: " 
 					+ DawsonHotelFactory.DAWSON.getCard(cardtype, number));
 
 			if (!expectValid)
@@ -123,13 +134,19 @@ public class DawsonHotelFactoryTest {
 		System.out.println("\n");
 	}
 	
+	/**
+	 * @author Andreea Draghicescu.
+	 * @param testCase, roomNumber, roomType, expectValid 
+	 * Creates an instance of DawsonRoom if it has valid parameters 
+	 * and the case are successful or not.
+	 */
 	private static void testRoomInstance(String testCase, int roomNumber, String roomType, boolean expectValid) {
 
 		System.out.println("   " + testCase);
 
 		try {
 			
-			System.out.print("\tThe Customer instance was created: " 
+			System.out.print("\tThe Room instance was created: " 
 					+ DawsonHotelFactory.DAWSON.getRoomInstance(roomNumber, roomType));
 
 			if (!expectValid)
@@ -151,6 +168,14 @@ public class DawsonHotelFactoryTest {
 		System.out.println("\n");
 	}
 	
+	
+	/**
+	 * @author Andreea Draghicescu.
+	 * @param testCase, Customer, Room, inYear, inMonth, inDay,
+			outYear, outMonth, outDay, expectValid 
+	 * Creates an instance of DawsonReservation if it has valid parameters 
+	 * and the case are successful or not.
+	 */
 	private static void testReservationInstance(String testCase, Customer Customer, Room Room, int inYear, int inMonth, int inDay,
 			int outYear, int outMonth, int outDay, boolean expectValid) {
 
@@ -158,7 +183,7 @@ public class DawsonHotelFactoryTest {
 
 		try {
 			
-			System.out.print("\tThe Customer instance was created: " 
+			System.out.print("\tThe Reservation instance was created: " 
 					+ DawsonHotelFactory.DAWSON.getReservationInstance(Customer, Room, inYear, inMonth, inDay, outYear, outMonth, outDay));
 
 			if (!expectValid)
@@ -180,13 +205,19 @@ public class DawsonHotelFactoryTest {
 		System.out.println("\n");
 	}
 	
+	/**
+	 * @author Andreea Draghicescu.
+	 * @param testCase, toCopy, expectValid 
+	 * Creates an instance of DawsonReservation if it has valid parameters 
+	 * and the case are successful or not.
+	 */
 	private static void testReservationInstance(String testCase, Reservation toCopy, boolean expectValid) {
 
 		System.out.println("   " + testCase);
 
 		try {
 			
-			System.out.print("\tThe Customer instance was created: " 
+			System.out.print("\tThe Reservation instance was created: " 
 					+ DawsonHotelFactory.DAWSON.getReservationInstance(toCopy));
 
 			if (!expectValid)

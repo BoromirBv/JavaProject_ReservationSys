@@ -12,7 +12,8 @@ public class DawsonRoomTest {
 		testDawsonRoom();
 	}
 	
-	/* @author Andreea Draghicescu 
+	/**
+	 * @author Andreea Draghicescu 
 	 * Tests the DawsonRoom class for different cases. The boolean represent 
 	 * what we expect the case to return. If it returns the opposite, the test has failed.
 	 */
@@ -21,17 +22,20 @@ public class DawsonRoomTest {
 		Room room1 = new DawsonRoom(108, RoomType.NORMAL);	
 		Room room2 = new DawsonRoom(801, RoomType.PENTHOUSE);
 
-		//Constructor test
+		//Constructor test - Valid
 		testDawsonRoomConstructor( "Case 1 - Valid data – valid DawsonRoom", 
 				108, RoomType.NORMAL, true);
 				
 		testDawsonRoomConstructor( "Case 2 - Valid data – valid DawsonRoom", 
 				801, RoomType.PENTHOUSE, true);
-		testDawsonRoomConstructor( "Case 3 - Valid data – Invalid Room number", 
-				809, RoomType.PENTHOUSE, false);
-		testDawsonRoomConstructor( "Case 4 - Valid data – Invalid Floor Number", 
-				906, RoomType.NORMAL, false);
 		
+		//Constructor test - Invalid
+		testDawsonRoomConstructor( "Case 3 - Invalid data – Room number", 
+				809, RoomType.PENTHOUSE, false);
+		testDawsonRoomConstructor( "Case 4 - Invalid data – Floor Number", 
+				906, RoomType.NORMAL, false);
+		testDawsonRoomConstructor( "Case 3 - Invalid data – Room number", 
+				809, RoomType.PENTHOUSE, false);		
 		
 		//equals test
 		System.out.println("Case 5 - equals data - Valid (Equal) "
@@ -47,7 +51,8 @@ public class DawsonRoomTest {
 
 	}
 
-	/* @author Andreea Draghicescu.
+	/**
+	 * @author Andreea Draghicescu.
 	 * @param testCase, roomNumber, roomType, expectValid 
 	 * Creates an instance of DawsonRoom if it has valid parameters 
 	 * and the case are successful or not.
