@@ -11,19 +11,24 @@ public class Email implements Serializable, Comparable<Email> {
 	private final static long serialVersionUID = 42031768871L;
 	private final String address;
 	
-	/* @param cardType, number
+	/** @param cardType, number
 	 * 
 	 */
 	public Email(String address) {
 		this.address = validateEmail(address);
 	}
 
+	/** @author Jephthia Louis
+	 * Compares 2 emails by the order of the host name followed by the user id, 
+	 * all case-insensitive
+	 */
 	@Override
-	public int compareTo(Email arg0) {
-		return 0;
+	public int compareTo(Email email) {
+		String full = getHost()+getUserId();
+		return full.compareToIgnoreCase(email.getHost()+email.getUserId());
 	}
 	
-	/* @author Nicolas Fontaine
+	/** @author Nicolas Fontaine
 	 * @return boolean if the emails are equal. Two emails are equal if
 	 * they have the same reference, are the same object, have the same class,
 	 * have the same address, or have the same hash code.
@@ -44,7 +49,7 @@ public class Email implements Serializable, Comparable<Email> {
 		return false;
 	}
 
-	/* @author Nicolas Fontaine
+	/** @author Nicolas Fontaine
 	 * @return tmp, a copy of the address
 	 */
 	public String getAddress() {
@@ -52,7 +57,7 @@ public class Email implements Serializable, Comparable<Email> {
 		return tmp;
 	}
 	
-	/* @author Nicolas Fontaine
+	/** @author Nicolas Fontaine
 	 * @return hostname from the email address.
 	 */
 	public String getHost() {
@@ -68,7 +73,7 @@ public class Email implements Serializable, Comparable<Email> {
 		return s;
 	}
 
-	/* @author Nicolas Fontaine
+	/** @author Nicolas Fontaine
 	 * @return user id from the email address.
 	 */
 	public String getUserId() {
@@ -82,10 +87,10 @@ public class Email implements Serializable, Comparable<Email> {
 		}
 		return s;
 	}
-
+	
+	@Override
 	public final int hashCode() {
-		
-		return this.hashCode();
+		return 37 + (getAddress() == null ? 0 : getAddress().hashCode());
 	}
 
 	@Override
@@ -93,7 +98,7 @@ public class Email implements Serializable, Comparable<Email> {
 		return address;
 	}
 	
-	/* @author Nicolas Fontaine
+	/** @author Nicolas Fontaine
 	 * @return email, the email address
 	 * @param email
 	 */
