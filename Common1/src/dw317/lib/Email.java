@@ -161,7 +161,9 @@ public class Email implements Serializable, Comparable<Email> {
 			if (validateDomainName(getHost(email))) {
 				return email;
 			}
-			throw new IllegalArgumentException("Invalid Email - Invalid Domain.");
+			else {
+				throw new IllegalArgumentException("Invalid Email - Invalid Domain.");
+			}
 		} else {
 			throw new IllegalArgumentException("Invalid Email - email is empty");
 		}
@@ -178,16 +180,17 @@ public class Email implements Serializable, Comparable<Email> {
 		for (int i = 0; i < s.length(); i++) {
 			char c = s.charAt(i);
 			while (c == '.') {
-				segment = s.substring(lastDot + 1, i - 1);
+				segment = s.substring(lastDot + 1, i);
 				if (segment.length() > 32 || segment.length() < 1) {
 					return false;
 				}
-				if (segment.matches("^[-].+") || segment.matches(".+[-]$") || segment.matches("^[-]$")) {
+				if (segment.matches("^[-].+") || segment.matches("^.+[-]$") || segment.matches("^[-]$")) {
 					return false;
 				}
 				if (segment.matches("^[A-Za-z0-9-]+$")) {
 					return true;
 				}
+				System.out.println(lastDot);
 				lastDot = i;
 			}
 		}
