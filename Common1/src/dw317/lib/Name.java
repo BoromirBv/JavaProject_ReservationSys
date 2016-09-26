@@ -19,32 +19,32 @@ public class Name implements Serializable {
 		this.lastName = validateName(lastName);
 	}
 
-	/* @return the firstName
+	/** @return the firstName
 	 * 
 	 */
 	public String getFirstName() {
 		return firstName;
 	}
 
-	/* @return the lastName
+	/** @return the lastName
 	 * 
 	 */
 	public String getLastName() {
 		return lastName;
 	}
 
-	/* @param firstName
+	/** @param firstName
 	 * 
 	 */
 	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+		this.firstName = validateName(firstName);
 	}
 
-	/* @param lastName
+	/** @param lastName
 	 * 
 	 */
 	public void setLastName(String lastName) {
-		this.lastName = lastName;
+		this.lastName = validateName(lastName);
 	}
 
 	public String getFullName() {
@@ -56,7 +56,7 @@ public class Name implements Serializable {
 	public String toString() {
 		return (firstName + "*" + lastName);
 	}
-	/* @author Nicolas Fontaine
+	/** @author Nicolas Fontaine
 	 * @return first name as a string if true. Throw exception if not valid.
 	 */
 	public static String validateName(String firstOrLast) {
