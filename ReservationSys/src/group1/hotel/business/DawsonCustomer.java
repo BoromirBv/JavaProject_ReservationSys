@@ -61,7 +61,8 @@ public class DawsonCustomer implements Customer {
 	 */
 	@Override
 	public Optional<CreditCard> getCreditCard() {
-		return null;
+		//might have to do deep copy, not sure yet
+		return this.creditCard;
 	}
 	
 	/* @author Jephthia Louis
@@ -90,6 +91,8 @@ public class DawsonCustomer implements Customer {
 	 */
 	@Override
 	public void setCreditCard(Optional<CreditCard> card) {
+		//might have to do deep copy, not sure yet
+		this.creditCard = card; 
 	}
 	/* @author Jephthia Louis
 	 * @return string of the parameters.
