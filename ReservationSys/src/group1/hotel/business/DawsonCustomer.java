@@ -14,7 +14,7 @@ public class DawsonCustomer implements Customer {
 	private static final long serialVersionUID = 42031768871L;
 	private final Name name;
 	private final Email email;
-	private final Optional<CreditCard> creditCard;
+	private Optional<CreditCard> creditCard;
 
 	public DawsonCustomer(String firstName, String lastName, String email) {
 		this.name = new Name(firstName, lastName);
@@ -53,9 +53,6 @@ public class DawsonCustomer implements Customer {
 			if (getEmail().equals(customer.getEmail())){
 				return true;
 			}
-		}
-		if(this.hashCode() == object.hashCode()) {
-			return true;
 		}
 
 		return false;
@@ -103,6 +100,7 @@ public class DawsonCustomer implements Customer {
 	 */
 	@Override
 	public void setCreditCard(Optional<CreditCard> card) {
+		this.creditCard = card;
 	}
 	
 	/** @author Jephthia Louis
