@@ -17,7 +17,7 @@ public class DawsonReservation implements Reservation {
 	private final LocalDate checkInDate;
 	private final LocalDate checkOutDate;
 	
-	/* @author Andreea Draghicescu and Nicolas Fontaine
+	/** @author Andreea Draghicescu and Nicolas Fontaine
 	 * 
 	 */
 	public DawsonReservation(Customer aCustomer, Room aRoom, int inYear, int inMonth, int inDay, int outYear,
@@ -41,7 +41,7 @@ public class DawsonReservation implements Reservation {
 		return 0;
 	}
 	
-	/* @author Nicolas Fontaine
+	/** @author Nicolas Fontaine
 	 * @return boolean if the objects are equal or not. Two Reservation
 	 * type objects are considered equal if their customer, room, checkin and
 	 * checkout times are equal.
@@ -63,7 +63,7 @@ public class DawsonReservation implements Reservation {
 		return false;
 	}
 
-	/* @author Andreea Draghicescu
+	/** @author Andreea Draghicescu
 	 * @return LocalDate of the checkint date.
 	 */
 	@Override
@@ -71,7 +71,7 @@ public class DawsonReservation implements Reservation {
 		return checkInDate;
 	}
 
-	/* @author Andreea Draghicescu
+	/** @author Andreea Draghicescu
 	 * @return LocalDate of the checkout date.
 	 */
 	@Override
@@ -79,7 +79,7 @@ public class DawsonReservation implements Reservation {
 		return checkOutDate;
 	}
 
-	/* @author Nicolas Fontaine
+	/** @author Nicolas Fontaine
 	 * @return customer
 	 */
 	@Override
@@ -89,7 +89,7 @@ public class DawsonReservation implements Reservation {
 		return custID;
 	}
 
-	/* @author Nicolas Fontaine
+	/** @author Nicolas Fontaine
 	 * @return days between check-ins and check-outs
 	 */
 	@Override
@@ -98,7 +98,7 @@ public class DawsonReservation implements Reservation {
 		return days;
 	}
 	
-	/* @author Nicolas Fontaine
+	/** @author Nicolas Fontaine
 	 * @return room
 	 */
 	@Override
@@ -113,7 +113,7 @@ public class DawsonReservation implements Reservation {
 		return 0;
 	}
 	
-	/* @author Andreea Draghicescu
+	/** @author Andreea Draghicescu
 	 * @return boolean if the days overlap. Days overlap if the chekin day of one
 	 * is before the other's check out date and the chekout date of one is after
 	 * the chekin date od the other.
@@ -137,7 +137,7 @@ public class DawsonReservation implements Reservation {
 		}
 	}
 
-	/* @author Andreea Draghicescu
+	/** @author Andreea Draghicescu
 	 * @return string of the email, checkin date and cheout date, and room
 	 * number.
 	 */
