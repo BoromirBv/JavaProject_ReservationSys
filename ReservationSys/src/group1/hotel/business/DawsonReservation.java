@@ -2,9 +2,7 @@ package group1.hotel.business;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-import dw317.hotel.business.interfaces.Customer;
-import dw317.hotel.business.interfaces.Reservation;
-import dw317.hotel.business.interfaces.Room;
+import dw317.hotel.business.interfaces.*;
 
 /**
  * @author Andreea Draghicescu and Nicolas Fontaine
