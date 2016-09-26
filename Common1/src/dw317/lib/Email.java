@@ -72,6 +72,18 @@ public class Email implements Serializable, Comparable<Email> {
 		}
 		return s;
 	}
+	private static String getHost(String b) {
+		String s = "";
+		int count = 0;
+		for (int i = 0; i < b.length(); i++) {
+			char c = b.charAt(i);
+			if (c == '@') {
+				count = b.charAt(i);
+				return b.substring(count + 1, address.length() - 1);
+			}
+		}
+		return s;
+	}
 
 	/** @author Nicolas Fontaine
 	 * @return user id from the email address.
@@ -80,6 +92,17 @@ public class Email implements Serializable, Comparable<Email> {
 		String s = "";
 		for (int i = 0; i < address.length(); i++) {
 			char c = address.charAt(i);
+			if (c != '@') {
+				s += c;
+			} else
+				return s;
+		}
+		return s;
+	}
+	private static String getUserId(String b) {
+		String s = "";
+		for (int i = 0; i < b.length(); i++) {
+			char c = b.charAt(i);
 			if (c != '@') {
 				s += c;
 			} else
@@ -103,23 +126,22 @@ public class Email implements Serializable, Comparable<Email> {
 	 * @param email
 	 */
 	private static String validateEmail(String email) throws IllegalArgumentException {
-		/*if (email != null) {
-			Email e = new Email(email);
-			if (e.getUserId().length() < 1 || e.getUserId().length() > 32) {
+		if (email != null) {
+			if (getUserId(email).length() < 1 || getUserId(email).length() > 32) {
 				throw new IllegalArgumentException("Email length isn't valid.");
 			}
-			if (!e.getUserId().matches("^[A-Za-z0-9_.-]+$") || e.getUserId().matches("^[.].+")
-					|| e.getUserId().matches(".+[.]$") || e.getUserId().matches("^[.]$")
-					|| e.getUserId().matches(".*[.][.].*")) {
+			if (!getUserId(email).matches("^[A-Za-z0-9_.-]+$") || getUserId(email).matches("^[.].+")
+					|| getUserId(email).matches(".+[.]$") || getUserId(email).matches("^[.]$")
+					|| getUserId(email).matches(".*[.][.].*")) {
 				throw new IllegalArgumentException("Email is invalid.");
 			}
-			if (validateDomainName(e.getHost())) {
+			if (validateDomainName(getHost(email))) {
 				return e.toString();
 			}
 			throw new IllegalArgumentException("Invalid Email.");
 		} else {
 			throw new IllegalArgumentException("Invalid Email - email is empty");
-		}*/
+		}
 		return email;
 	}
 
