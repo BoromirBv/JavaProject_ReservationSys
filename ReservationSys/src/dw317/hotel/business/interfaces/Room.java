@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import dw317.hotel.business.RoomType;
 
-/*
+/**
  * @author Nicolas Fontaine
  */
 
