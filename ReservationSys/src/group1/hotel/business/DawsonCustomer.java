@@ -39,7 +39,7 @@ public class DawsonCustomer implements Customer {
 	 * @param object
 	 */
 	@Override
-	public boolean equals(Object object) {
+	public final boolean equals(Object object) {
 		if (object == null){
 			return false;
 		}
@@ -81,7 +81,7 @@ public class DawsonCustomer implements Customer {
 	}
 
 	@Override
-	public int hashCode() {
+	public final int hashCode() {
 		return 37 + (getEmail() == null ? 0 : getEmail().hashCode());
 	}
 	
