@@ -128,9 +128,9 @@ public class DawsonReservation implements Reservation {
 	public final int hashCode() {
 
 		return 37 + (this.getCheckInDate() == null ? 0 : this.getCheckInDate().hashCode())
-				 +			+ (this.getCheckOutDate() == null ? 0 : this.getCheckOutDate().hashCode())
-				 +			+ (this.getRoom() == null ? 0 : this.getRoom().hashCode())
-				 +			+ (this.getCustomer() == null ? 0 : this.getCustomer().hashCode());
+			+ (this.getCheckOutDate() == null ? 0 : this.getCheckOutDate().hashCode())
+			+ (this.getRoom() == null ? 0 : this.getRoom().hashCode())
+			+ (this.getCustomer() == null ? 0 : this.getCustomer().hashCode());
 	}
 	
 	/** 
