@@ -4,12 +4,14 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
+import java.util.Optional;
 import java.util.Scanner;
 import java.io.*;
 
 import dw317.hotel.business.RoomType;
 import dw317.hotel.business.interfaces.Customer;
 import dw317.hotel.business.interfaces.Room;
+import dw317.lib.creditcard.CreditCard;
 import group1.hotel.business.DawsonCustomer;
 import group1.hotel.business.DawsonRoom;
  /**
@@ -28,8 +30,7 @@ public class HotelFileLoader {
 	 * @throws IOException
 	 */
 	public static Room[] getRoomListFromSequentialFile(String filename) throws IOException {
-		Room[] roomArray = new Room[2]; // 2 will be the size per line, the size
-										// increases every line
+		Room[] roomArray = new Room[1];
 		Scanner inputFile = null;
 		String line = null;
 		try {
@@ -75,7 +76,7 @@ public class HotelFileLoader {
 	 * @throws IOException
 	 */
 	public static Customer[] getCustomerListFromSequentialFile(String filename) throws IOException {
-		Customer[] arr = new Customer[3];
+		Customer[] arr = new Customer[5];
 		Scanner inputFile = null;
 		String recordStr = null;
 		try {
@@ -88,9 +89,19 @@ public class HotelFileLoader {
 				recordStr = inputFile.nextLine();
 				fields = recordStr.split("\\*");
 				try {
+					System.out.println(fields[3].toString() + " " + fields[4].toString());
+					System.out.println(arr.length);
+					/*if(fields[3] == null || fields[4] == null) {
+						throw new NullPointerException("It's null.");
+					}*/
+					//CreditCard.CardType type = CreditCard.CardType.valueOf(fields[3].toUpperCase());
+					//arr[i].setCreditCard(Optional.of(CreditCard.getInstance(type, fields[4])));
 					arr[i] = new DawsonCustomer(fields[1], fields[2], fields[0]);
+					
 					System.out.println(arr[i]);
 					i++;
+					System.out.println(i);
+					
 					if (i >= arr.length)
 						arr = Arrays.copyOf(arr, arr.length * 2 + 1);
 				} catch (ArrayIndexOutOfBoundsException e) {
